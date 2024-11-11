@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+   <link rel="stylesheet" href="admin-style.css">
+
+</head>
+<body>
+
+    <!--
+    JavaScript will update this table dynamically as data changes due to CRUD operations.
+    -->
+
+    <h2>Admin Panel</h2>
+
+    <!--after doing queries it can be useful to clear the table, temporary button implementation -->
+    <button type="button" onclick="clearTable()">Clear Table</button>
+
+<!-- id_user, user_first_name, user_last_name, user_email
+
+The <tbody> tag is used to group the body content in an HTML table.
+
+The <tbody> tag must be used in the following context:
+As a child of a <table> element, after any <caption>, <colgroup>, and <thead> elements.
+
+-->
+    <div id="status"></div>
+    <table id="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>user_first_name</th>
+            <th>user_last_name</th>
+            <th>user_email</th>
+        </tr>
+        </thead>
+        <tbody id="tBody">
+        <!-- here is not needed an initial markup -->
+        <!--<tr>
+             <td></td>
+
+        </tr> -->
+        </tbody>
+        <tfoot>
+        <!-- TODO if needed-->
+        </tfoot>
+    </table>
+
+    <!-- The form’s method="POST" and action="#" are not necessary if JavaScript handles all data submissions.
+         Remove these attributes or modify them to prevent default submission behavior.
+         JavaScript will handle the form data through AJAX requests.
+    -->
+    <form>
+
+        <!--
+        While your form inputs are well-labeled, ensuring each input is accessible,
+        adding ARIA attributes could enhance accessibility further, helping those with disabilities.
+        -->
+
+        <label for="id">Enter ID from User :</label> <!-- for Updates, Deletes and Retrieve specific User-->
+        <input type="number" id="id" name="id"><br><br>
+
+        <label for="user_first_name">First name:</label>
+        <input type="text" id="user_first_name" name="user_first_name"><br><br>
+
+        <label for="user_last_name">Last name:</label>
+        <input type="text" id="user_last_name" name="user_last_name"><br><br>
+
+        <label for="user_email">E-mail:</label>
+        <input type="text" id="user_email" name="user_email"><br><br>
+
+        <!-- Buttons within forms default to submitting the form unless specified otherwise.
+             Specify type="button" for each button unless you intend for it to submit the form.
+             ... allowing your JavaScript functions to handle these actions asynchronously.
+        -->
+        <button type="button" onclick="addUser()">Create (addUser)</button> <!-- corresponds to Controller addUser Method, Create POST-->
+        <button type="button" onclick="retrieveUser()">Read (retrieveUser)</button> <!-- corresponds to Controller retrieveUser Method, Retrieve, READ GET-->
+        <button type="button" onclick="modifyUser()">Update (modifyUser)</button> <!-- corresponds to Controller modifyUser Method, Update POST-->
+        <button type="button" onclick="removeUser()">Delete (removeUser)</button> <!-- corresponds to Controller removeUser Method, Delete POST-->
+
+        <button type="button" onclick="retrieveAllUsers()">Read (retrieveAllUsers)</button> <!-- corresponds to Controller retrieveUser Method, Retrieve, READ GET-->
+
+    </form>
+
+    <!--
+    Improvement: Add a clear and responsive area (like a table or list) in the
+    HTML to dynamically display the fetched users. Ensure the button for retrieveAllUsers
+    is properly set up to invoke this function without reloading the page.
+    -->
+
+    <!--
+    https://www.w3schools.com/tags/att_script_src.asp
+    https://www.w3schools.com/html/html_tables.asp
+    https://www.w3schools.com/tags/tag_form.asp
+    https://www.geeksforgeeks.org/how-to-add-edit-and-delete-data-in-html-table-using-javascript/
+
+    HTML Validation: Ensure your HTML code is valid by using tools like the
+    W3C validation service. This can help catch errors like those in your input tags.
+
+    Accessibility: Enhance accessibility by ensuring every input field is
+    properly labeled and consider adding ARIA attributes if necessary.
+
+    Consider moving it to the end of the <body> to ensure that all
+    HTML elements are loaded before the script runs.
+    This helps in manipulating DOM elements more reliably.
+
+    -->
+
+    <script src="functions.js"></script>
+</body>
+
+</html>
